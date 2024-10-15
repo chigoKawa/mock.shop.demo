@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript">
+      // This script will prevent the infinite redirect loop and handle unknown routes.
+
+      // Check if the current URL is already "/index.html"
+      if (!window.location.pathname.endsWith('/index.html')) {
+        // If not, rewrite the URL to "/" but keep the query parameters and hash
+        var newUrl = '/' + window.location.search + window.location.hash;
+        
+        // Replace the current URL without triggering another navigation
+        window.history.replaceState({}, '', newUrl);
+
+        // Now reload the page to allow the Flutter Router to handle the correct route
+        window.location.reload();
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Redirecting...</h1>
+  </body>
+</html>
